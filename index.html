@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connelly Family</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f0f0ec;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      color: #1a1a18;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      border-radius: 16px;
+      border: 0.5px solid #ddd;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .card-header {
+      background: #1a3a2a;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .card-header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.2px;
+    }
+
+    .card-header p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 6px;
+    }
+
+    /* ── Lock screen ── */
+    #lock-screen {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .lock-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .lock-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a18;
+      margin-bottom: 4px;
+    }
+
+    .lock-sub {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    .pw-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    #pw-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    #pw-input:focus { border-color: #378add; background: white; }
+
+    #pw-btn {
+      padding: 10px 20px;
+      background: #1a3a2a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    #pw-btn:hover { opacity: 0.85; }
+
+    #pw-error {
+      font-size: 13px;
+      color: #c0392b;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* ── Home screen ── */
+    #home-screen {
+      display: none;
+      padding: 32px;
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .welcome h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a18;
+      margin-bottom: 4px;
+    }
+
+    .welcome p {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 0.5px solid #e0e0dc;
+      text-decoration: none;
+      color: #1a1a18;
+      transition: background 0.12s, border-color 0.12s;
+      background: #fafaf8;
+    }
+
+    .nav-link:hover {
+      background: #f0f4f0;
+      border-color: #1a3a2a;
+    }
+
+    .nav-link-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .nav-link-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .nav-link-text span {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .nav-link-arrow {
+      margin-left: auto;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <h1>🏡 Connelly Family</h1>
+      <p>connellyfamily.org</p>
+    </div>
+
+    <!-- Lock screen -->
+    <div id="lock-screen">
+      <div class="lock-icon">🔒</div>
+      <div class="lock-title">Welcome</div>
+      <div class="lock-sub">Enter the family password to continue</div>
+      <div class="pw-row">
+        <input id="pw-input" type="password" placeholder="Family password" autocomplete="current-password" />
+        <button id="pw-btn" type="button">Enter</button>
+      </div>
+      <p id="pw-error">Incorrect password — try again</p>
+    </div>
+
+    <!-- Home screen -->
+    <div id="home-screen">
+      <div class="welcome">
+        <h2>Welcome, Connellys! 👋</h2>
+        <p>What would you like to visit?</p>
+      </div>
+      <div class="nav-links">
+        <a href="https://calendar.connellyfamily.org" class="nav-link">
+          <div class="nav-link-icon">📅</div>
+          <div class="nav-link-text">
+            <strong>Family Calendar</strong>
+            <span>View family, work & other events</span>
+          </div>
+          <div class="nav-link-arrow">›</div>
+        </a>
+        <a href="https://recipes.connellyfamily.org" class="nav-link">
+          <div class="nav-link-icon">🍽️</div>
+          <div class="nav-link-text">
+            <strong>Family Recipes</strong>
+            <span>Browse and manage family recipes</span>
+          </div>
+          <div class="nav-link-arrow">›</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">Connelly Family &nbsp;·&nbsp; Private &nbsp;·&nbsp; v1.0</footer>
+
+  <script>
+    const HASH = "5d5bddb577102d0a960bcf6fea9050c10fe5e9feddcb5c2170ccab872db9ee87"; // chaos
+
+    async function sha256(msg) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(msg));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,"0")).join("");
+    }
+
+    async function checkPassword() {
+      const hash = await sha256(document.getElementById("pw-input").value.trim());
+      if (hash === HASH) {
+        sessionStorage.setItem("homeAuth", hash);
+        showHome();
+      } else {
+        document.getElementById("pw-error").style.display = "block";
+        document.getElementById("pw-input").value = "";
+        document.getElementById("pw-input").focus();
+      }
+    }
+
+    function showHome() {
+      document.getElementById("lock-screen").style.display = "none";
+      document.getElementById("home-screen").style.display = "block";
+    }
+
+    document.getElementById("pw-btn").addEventListener("click", checkPassword);
+    document.getElementById("pw-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") checkPassword();
+      document.getElementById("pw-error").style.display = "none";
+    });
+
+    if (sessionStorage.getItem("homeAuth") === HASH) showHome();
+  </script>
+
+</body>
+</html>
